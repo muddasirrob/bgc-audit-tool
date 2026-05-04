@@ -14,7 +14,8 @@ export default function App() {
     setReport(null);
 
     try {
-      const res = await fetch('/api/process', { method: 'POST', body: formData });
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const res = await fetch(`${apiUrl}/api/process`, { method: 'POST', body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Processing failed');
       setReport(data);
