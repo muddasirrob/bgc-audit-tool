@@ -5,7 +5,9 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 // Disable Vercel's default body parser so formidable can process the multipart stream
+// Also increase maxDuration to 60 seconds (Hobby limit) for AI generation
 export const config = {
+  maxDuration: 60,
   api: {
     bodyParser: false,
   },
